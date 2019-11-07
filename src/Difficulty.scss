@@ -1,0 +1,75 @@
+.Difficulty {
+  h1 {
+    margin: 0;
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 25px 0;
+    justify-content: space-evenly;
+
+    li {
+      flex: 1;
+      text-align: center;
+      background: #eee;
+      color: #333;
+      cursor: pointer;
+      padding: 25px 0;
+      transition: all 180ms linear;
+
+      &:hover:not(.selected) {
+        background: #e0e0e0;
+      }
+
+      &.selected {
+        background: #333;
+        color: #fff;
+      }
+    }
+  }
+
+  .custom_difficulty {
+    margin: 25px 0;
+
+    .form_group {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      .label {
+        flex: 3;
+        text-align: center;
+      }
+
+      input {
+        flex: 1;
+        font-size: 16px;
+        padding: 10px 15px;
+        outline: 0;
+      }
+    }
+  }
+
+  button {
+    margin: 0;
+    display: block;
+    width: 100%;
+    padding: 20px 0;
+    background: #fff;
+    border: 1px solid #333;
+    transition: all 180ms linear;
+    outline: 0;
+    cursor: pointer;
+    color: #333;
+
+    &:hover {
+      background: #eee;
+    }
+  }
+}

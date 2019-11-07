@@ -1,0 +1,23 @@
+$border_color: #444;
+
+.Board {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid $border_color;
+  border-bottom: 1px solid $border_color;
+
+  .Board--row {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    border-left: 1px solid $border_color;
+    border-right: 1px solid $border_color;
+
+    .Board--column {
+      width: 40px;
+      height: 40px;
+      border: 1px solid $border_color;
+    }
+  }
+}
