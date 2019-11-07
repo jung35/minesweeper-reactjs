@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker exec -it minesweaper-app ${@:1}
