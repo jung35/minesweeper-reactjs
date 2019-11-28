@@ -4,11 +4,12 @@ import generateGrid from "./utils/generateGrid";
 import Difficulty from "./Difficulty";
 import "./App.scss";
 import Board from "./Board";
-import { BLOCK_BOMB } from "./constants";
+import { BLOCK_BOMB, BLOCK_EMPTY } from "./constants";
 
 export default function App() {
   const [grid, setGrid] = React.useState(null);
   const [start_time, setTime] = React.useState(-1);
+  const [end_time, setEndTime] = React.useState(-1);
 
   function onPlayGame(difficulty) {
     const width = difficulty.width;
@@ -22,15 +23,39 @@ export default function App() {
   }
 
   function onShow(i, j) {
+    if (end_time !== -1) {
+      return;
+    }
+
     if (start_time === -1) {
       setTime(+new Date());
     }
 
     if (!grid[i][j].show) {
       grid[i][j].show = true;
+
+      if (grid[i][j].value === BLOCK_EMPTY) {
+        if (i > 0) {
+          onShow(i - 1, j);
+        }
+
+        if (i < grid.length - 1) {
+          onShow(i + 1, j);
+        }
+
+        if (j > 0) {
+          onShow(i, j - 1);
+        }
+
+        if (j < grid[i].length - 1) {
+          onShow(i, j + 1);
+        }
+      }
     }
 
     if (grid[i][j].value === BLOCK_BOMB) {
+      console.log("GaME OVER");
+      setEndTime(+new Date());
       // game end
     }
 
@@ -53,6 +78,7 @@ export default function App() {
       <Board
         grid={grid}
         start_time={start_time}
+        end_time={end_time}
         onShow={onShow}
         onFlag={onFlag}
       />

@@ -15,7 +15,7 @@ export default function Board(props) {
   return (
     <>
       <h1>
-        Timer: <Timer start_time={props.start_time} />
+        Timer: <Timer start_time={props.start_time} end_time={props.end_time} />
       </h1>
       <div className="Board">
         {grid.map(function(row, i) {
